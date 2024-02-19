@@ -33,6 +33,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.title('Analysis of property tax in West Roxbury')
 
+plt.rcParams['font.family'] = 'DeJavu Serif'
+plt.rcParams['font.serif'] = ['Times New Roman']
+
 DATE_COLUMN = 'date/time'
 DATA_URL = "https://raw.githubusercontent.com/reisanar/datasets/master/WestRoxbury.csv"
 
