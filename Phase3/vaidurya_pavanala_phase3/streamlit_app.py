@@ -38,7 +38,7 @@ DATA_URL = "https://raw.githubusercontent.com/reisanar/datasets/master/WestRoxbu
 
 @st.cache_data
 def load_data(nrows):
-    s = requests.get(url).content
+    s = requests.get(DATA_URL).content
     ds = pd.read_csv(io.StringIO(s.decode('utf-8')), nrows=nrows)
     ds = ds.rename(columns={'TOTAL VALUE ': 'TOTAL_VALUE', 'LOT SQFT ': 'LOT_SQFT', 'YR BUILT': 'YR_BUILT', 'GROSS AREA ': 'GROSS_AREA', 'LIVING AREA': 'LIVING_AREA', 'FLOORS ': 'FLOORS', 'BEDROOMS ': 'BEDROOMS', 'FULL BATH': 'FULL_BATH', 'HALF BATH': 'HALF_BATH'})
     return ds
