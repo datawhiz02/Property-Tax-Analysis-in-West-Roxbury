@@ -24,6 +24,8 @@ from sklearn.tree import DecisionTreeRegressor, plot_tree
 from sklearn.inspection import plot_partial_dependence
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
+import io
+import requests
 
 import math
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -32,11 +34,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title('Analysis of property tax in West Roxbury')
 
 DATE_COLUMN = 'date/time'
-DATA_URL = ('WestRoxbury.csv')
+DATA_URL = "https://raw.githubusercontent.com/reisanar/datasets/master/WestRoxbury.csv"
 
 @st.cache_data
 def load_data(nrows):
-    ds = pd.read_csv(DATA_URL, nrows=nrows)
+    ds = pd.read_csv(io.StringIO(s.decode('utf-8')), nrows=nrows)
     ds = ds.rename(columns={'TOTAL VALUE ': 'TOTAL_VALUE', 'LOT SQFT ': 'LOT_SQFT', 'YR BUILT': 'YR_BUILT', 'GROSS AREA ': 'GROSS_AREA', 'LIVING AREA': 'LIVING_AREA', 'FLOORS ': 'FLOORS', 'BEDROOMS ': 'BEDROOMS', 'FULL BATH': 'FULL_BATH', 'HALF BATH': 'HALF_BATH'})
     return ds
 
